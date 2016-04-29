@@ -7,7 +7,6 @@ body {
 }
 
 img#logo{
-    border-radius: 50%;
     height: 25%;
     width: 25%;
 }
@@ -48,6 +47,11 @@ h1{
   font-family: 'nickainleyregular';
   font-size: 100px;
 }
+
+a{
+  color: white !important;
+  text-shadow: none !important;
+  font-size: 12px;}
 
 #fc {
   font-family: 'nickainleyregular';
