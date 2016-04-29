@@ -3,12 +3,16 @@
   <head>
     <meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
     <link	rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link	rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="landing.js"></script>
 
   </head>
+
   <body>
     <main	class="container-fluid">
       <div class="row">
@@ -17,7 +21,14 @@
             <br>
             <h1>Painterly</h1>
             <br>
-            <button type="button" class="btn btn-primary btn-lg bcolor">   SIGN UP   </button><span id="fc"> or </span><button type="button" class="btn btn-primary btn-lg pcolor">    LOG IN    </button>
+
+            <a href ="#signup" data-rel="popup" class="btn btn-primary btn-lg bcolor">   SIGN UP   </a><span id="fc"> or </span>
+            <a href="#login" data-rel="popup" class="btn btn-primary btn-lg pcolor">    LOG IN    </a>
+
+            <div data-role="login" id="popupBasic">
+            <p>This is a completely basic popup, no options set.</p>
+            </div>
+
             <br>
             <h5> What is painterly? </h5>
             Join a community of college-level artists sharing work of different mediums. Critique others' work and get critiques on your work!
@@ -64,6 +75,5 @@
       </div>
 
     </main>
-  <script src="/js/landing.js"></script>
   </body>
 </html>
