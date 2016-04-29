@@ -48,6 +48,11 @@ h1{
   font-size: 100px;
 }
 
+a{
+  color: white !important;
+  text-shadow: none !important;
+  font-size: 12px;}
+
 #fc {
   font-family: 'nickainleyregular';
   font-size: 60px;
