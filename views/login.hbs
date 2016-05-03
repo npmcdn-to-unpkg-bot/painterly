@@ -9,7 +9,7 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   </head>
   <body>
-    
+
 <div data-role="page" id="main">
     <main	class="container-fluid">
       <div class="row">
@@ -20,48 +20,66 @@
             <h1>Painterly</h1>
             <br>
 
-            <a href ="#signup" data-rel="popup" class="btn btn-primary btn-lg bcolor">   SIGN UP   </a>
-            <a href="#login" data-rel="popup" class="btn btn-primary btn-lg pcolor">    LOG IN    </a>
+            <a href ="#signup" data-rel="popup" class="btn btn-primary btn-lg bcolor" data-position-to="window">   SIGN UP   </a>
+            <a href="#login" data-rel="popup" class="btn btn-primary btn-lg pcolor" data-position-to="window">    LOG IN    </a>
             <br><br>
             <div data-role="popup" id="login" class="ui-content" style="min-width:250px;">
               <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-              <form method="post" action="index">
+              <form method="post" action="login">
                 <div>
                   <h3>Login information</h3>
                   <label for="usrnm" class="ui-hidden-accessible">Username:</label>
                   <input type="text" name="username" required id="usrnm" placeholder="Username">
                   <label for="pswd" class="ui-hidden-accessible">Password:</label>
                   <input type="password" name="password" required id="pswd" placeholder="Password" >
-
                   <input type="submit" data-inline="true" value="Log in">
                 </div>
               </form>
             </div>
 
             <div data-role="popup" id="signup" class="ui-content" style="min-width:250px;">
-              <form method="post" action="/index">
+              <form method="post" action="login/signup">
                 <div>
                   <h3>Signup information</h3>
                   <label for="emailS" class="ui-hidden-accessible">Email:</label>
-                  <input type="text" name="emailS" id="emailS" placeholder="Email">
+                  <input type="text" name="emailS" required  id="emailS" placeholder="Email">
                   <label for="usernameS" class="ui-hidden-accessible">Username:</label>
-                  <input type="text" name="userS" id="usernameS" placeholder="Username">
+                  <input type="text" name="userS" required id="usernameS" placeholder="Username">
                   <label for="pswdS" class="ui-hidden-accessible">Password:</label>
-                  <input type="password" name="passwS" id="pswdS" placeholder="Password">
+                  <input type="password" name="passwS" required id="pswdS" placeholder="Password">
+                  <label for="college" class="ui-hidden-accessible">College:</label>
+                  <input type="text" name="college" required id="college" placeholder="College">
+                  <label for="location" class="ui-hidden-accessible">Location:</label>
+                  <input type="text" name="location" required id="loc" placeholder="location">
                   <label for="signupS">What level are you?</label>
                   <fieldset data-role="controlgroup" data-type="horizontal" >
-                    <input type="radio" name="radio-choice-2" id="radio-choice-1" value="choice-1"  />
+                    <input type="radio" name="level" id="radio-choice-1" value="Freshman" checked/>
                     <label for="radio-choice-1">Freshman</label>
-                    <input type="radio" name="radio-choice-2" id="radio-choice-2" value="choice-2"  />
+                    <input type="radio" name="level" id="radio-choice-2" value="Sophmore<"  />
                     <label for="radio-choice-2">Sophmore</label>
-                    <input type="radio" name="radio-choice-2" id="radio-choice-3" value="choice-3"  />
+                    <input type="radio" name="level" id="radio-choice-3" value="Junior"  />
                     <label for="radio-choice-3">Junior</label>
-                    <input type="radio" name="radio-choice-2" id="radio-choice-4" value="choice-4"  />
+                    <input type="radio" name="level" id="radio-choice-4" value="Senior"  />
                     <label for="radio-choice-4">Senior</label>
-                    <input type="radio" name="radio-choice-2" id="radio-choice-5" value="choice-5"  />
+                    <input type="radio" name="level" id="radio-choice-5" value="Graduate"  />
                     <label for="radio-choice-5">Graduate</label>
-                    <input type="radio" name="radio-choice-2" id="radio-choice-6" value="choice-6"  />
+                    <input type="radio" name="level" id="radio-choice-6" value="Educator"  />
                     <label for="radio-choice-6">Educator</label>
+                  </fieldset>
+                  <label for="signupS">What medium do you produce?</label>
+                  <fieldset data-role="controlgroup" data-type="horizontal" >
+                    <input type="radio" name="medium" id="radio-choice-7" value="Digital" checked/>
+                    <label for="radio-choice-7">Digital</label>
+                    <input type="radio" name="medium" id="radio-choice-8" value="Branding"  />
+                    <label for="radio-choice-8">Branding</label>
+                    <input type="radio" name="medium" id="radio-choice-9" value="Paintings"  />
+                    <label for="radio-choice-9">Paintings</label>
+                    <input type="radio" name="medium" id="radio-choice-10" value="Illustration"  />
+                    <label for="radio-choice-10">Illustration</label>
+                    <input type="radio" name="medium" id="radio-choice-11" value="Sculpture"  />
+                    <label for="radio-choice-11">Sculpture</label>
+                    <input type="radio" name="medium" id="radio-choice-12" value="Other"  />
+                    <label for="radio-choice-12">Other</label>
                   </fieldset>
                   <input type="submit" data-inline="true" value="Sign me up!">
                 </div>
@@ -69,6 +87,9 @@
             </div>
             {{#if error}}
                 <p>{{error}}</p>
+            {{/if}}
+            {{#if invalid}}
+                <p>{{invalid}}</p>
             {{/if}}
             <h5> What is painterly? </h5>
             Join a community of college-level artists sharing work of different mediums. Critique others' work and get critiques on your work!
