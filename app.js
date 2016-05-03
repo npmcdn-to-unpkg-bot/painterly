@@ -4,11 +4,84 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var index = require('./routes/index');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var home = require('./routes/home')
 
 var app = express();
+
+var session = require('express-session');
+var flash = require('express-flash');
+var env = require('dotenv');
+env.config();
+
+var pg = require('pg').native;
+// var pg = require('pg') // this is for local database use only
+// javascript password encryption (https://www.npmjs.com/package/bcryptjs)
+var bcrypt = require('bcryptjs');
+//  authentication middleware
+var passport = require('passport');
+// authentication locally (not using passport-google, passport-twitter, passport-github...)
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy({
+    usernameField: 'username', // form field
+    passwordField: 'password'
+  },
+  function(username, password, done) {
+    pg.connect(process.env.DATABASE_URL, function(err, client, next) {
+      if (err) {
+        return console.error("Unable to connect to database");
+      }
+      console.log("Connected to database");
+      client.query('SELECT * FROM users WHERE username = $1', [username], function(err, result) {
+        // Release client back to pool
+        next();
+        if (err) {
+          console.log("Database error");
+          return done(err);
+        }
+        if (result.rows.length > 0) {
+          var matched = bcrypt.compareSync(password, result.rows[0].password);
+          if (matched) {
+            console.log("Successful login");
+            return done(null, result.rows[0]);
+          }
+        }
+        console.log("Bad username or password");
+        return done(null, false, {message: 'Bad username or password'});
+      });
+    });
+  })
+);
+
+// Store user information into session
+passport.serializeUser(function(user, done) {
+  //return done(null, user.id);
+  return done(null, user);
+});
+
+// Get user information out of session
+passport.deserializeUser(function(id, done) {
+  return done(null, id);
+});
+
+// Use the session middleware
+// configure session object to handle cookie
+app.use(session({
+  //proxy: true,
+  secret: 'keyboard cat',
+//  cookie: { maxAge: 60000 },
+  resave:false,
+  saveUninitialized: true,
+//  cookie: { secure: app.get('env') === 'production' }
+}));
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +96,8 @@ app.use(cookieParser());
 //lets us use static files in public
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/index', index);
+app.use('/home', home);
 app.use('/', routes);
 app.use('/users', users);
 
