@@ -16,7 +16,7 @@ router.post('/',
     // res.json(req.user);
     // res.redirect('/users/profile')
     console.log(req.user);
-    res.redirect('/home'), {user: req.user};
+    res.redirect('/dashboard'), {user: req.user};
 });
 
 router.get('/logout', function(req, res){
@@ -64,7 +64,7 @@ router.post('/changePassword', function(req, res,next){
 
 function loggedIn(req, res, next) {
   if (req.user) {
-    res.redirect('/home');
+    res.redirect('/dashboard');
   } else {
     res.redirect('/'); // user doesn't exisit
   }
