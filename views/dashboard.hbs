@@ -166,7 +166,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                   <center>
-                  <p><h4>{{user.username}}</h4></p>
+                  <p><h4>Your Info</h4></p>
                     <div class="image-circle"><img src="masonry/pages/images/GenericUser.png"></div>
                     <p></p>
                     <ul class="nav" id="side-menu">
@@ -241,9 +241,7 @@
               {{/each}}
               {{else}}
       <!---       <h4>No posts to display.</h4> --->
-              {{/if}}
-              <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
-                <div class="grid">
+
                   <div class="grid-item">
                   <div class="panel-heading">
                       <a href="{{username}}">{{user.username}}</a> posted:
@@ -256,26 +254,27 @@
                       {{user.level}}
                       {{tag}}
                     </p>
-                  </div></div></div>
-              <div class="grid-item">
-              <div class="panel-heading">
-                  <a href="{{username}}">{{user.username}}</a> posted:
+                  </div>
+                </div>
               </div>
-                <p> Now, this is a story all about how
+
+              <div class="grid-item">
+                <div class="panel-heading">
+                    <a href="{{username}}">{{user.username}}</a> posted:
+                </div>
+                    Now, this is a story all about how
                     My life got flipped-turned upside down
                     And I'd like to take a minute
                     Just sit right there
                     I'll tell you how I became the prince of a town called Bel-Air
-
-                  <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{user.college}}
-                  <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{user.location}}
-                  <br>
-                  {{user.level}}
-                  {{tag}}
-                </p>
+                  <p>
+                    <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{user.college}}
+                    <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{user.location}}
+                    <br>
+                    {{user.level}}
+                    {{tag}}
+                  </p>
               </div>
-          </div>
-          </div>
 
 <!-- END page content -->
 
