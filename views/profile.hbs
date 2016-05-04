@@ -167,7 +167,6 @@
                 <div class="sidebar-nav navbar-collapse">
                   <center>
                   <p><h4>Your Info</h4></p>
-                    <div class="image-circle"><img src="masonry/pages/images/GenericUser.png"></div>
                     <p></p>
                     <ul class="nav" id="side-menu">
                         <li>
@@ -209,72 +208,15 @@
             <div class="row">
                 <div class="col-lg-12">
                   {{#if user}}
-                    <h4 class="page-header">Hi, {{user.username}}! Here is your dashboard.</h4>
+                    <h4 class="page-header">Hi, {{user.username}}! Here's your profile.</h4>
+                    Email:{{user.email}} <br>
+                    location:{{user.location}}<br>
+                    college:{{user.college}}<br>
+                    medium:{{user.medium}}<br>
+                    level: {{user.level}}
                   {{/if}}
             </div>
             </div>
-  <!---             {{#if post}}
-         <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
-              <div class="grid">
-                {{#each posts}}
-                <div class="grid-item">
-                  <div class="panel-heading">
-                      <a href="{{theirusername}}">{{usernamep}}</a> posted:
-                  </div>
-                    {{#if photoUpload}}
-                    {{photoUpload}}
-                    {{/if}}
-                    <p>
-                    {{#if description}}
-                    {{description}}
-                    {{/if}}
-                  </p>
-                    <p>
-                      <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{theirschool}}
-                      <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{theirlocation}}
-                      <br>
-                      {{theirschoollevel}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-              {{else}}
-              {{/if}} --->
-      <!---       <h4>No posts to display.</h4> --->
-                <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
-                  <div class="grid-item">
-                  <div class="panel-heading">
-                      <a href="{{username}}">{{user.username}}</a> posted:
-                  </div>
-                    <img src="masonry/pages/images/cat2.jpg"> Look at him. Just look at him
-                    <p>
-                      <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{user.college}}
-                      <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{user.location}}
-                      <br>
-                      {{user.level}}
-                      {{tag}}
-                    </p>
-                  </div>
-
-
-
-              <div class="grid-item">
-              <div class="panel-heading">
-                  <a href="{{username}}">{{user.username}}</a> posted:
-              </div>
-                <img src="masonry/pages/images/cat.jpg"> Sleeping beauty
-                <p>
-                  <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{user.college}}
-                  <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{user.location}}
-                  <br>
-                  {{user.level}}
-                  {{tag}}
-                </p>
-              </div>
-            </div>
-          </div>
-          </div>
 
 
 <!-- END page content -->

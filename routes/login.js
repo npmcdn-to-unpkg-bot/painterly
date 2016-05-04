@@ -58,9 +58,9 @@ router.post('/changePassword', function(req, res,next){
   }
 });
 router.get('/dashboard',loggedIn,function(req, res){
-      res.render('/dashboard'), { user: req.user }; //
+  // connect DB and read table assignments
+  res.render('/dashboard', { title: 'Painterly | a whole new art critique website', user: req.user});
 });
-
 function loggedIn(req, res, next) {
   if (req.user) {
     res.redirect('/dashboard'), { user: req.user };
@@ -68,7 +68,6 @@ function loggedIn(req, res, next) {
     res.redirect('/'); // user doesn't exisit
   }
 }
-
 ///////////////////////////////////////////////////////////
 // check if username has spaces, DB will whine about that
 function validUsername(username) {

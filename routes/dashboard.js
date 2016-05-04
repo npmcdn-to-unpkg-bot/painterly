@@ -5,17 +5,20 @@ var pg = require('pg').native; // var pg = require)'pg') for Local database user
 var bcrypt = require('bcryptjs');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',function(req, res, next){
   // connect DB and read table assignments
   pg.connect(process.env.DATABASE_URL + "?ssl=true", connectDB_showPosts(req,res,next));
   res.render('dashboard', { title: 'Painterly | a whole new art critique website', user: req.user});
+});
+
+router.get('/profile',function(req, res, next){
+  res.render('profile', { title: 'Painterly | a whole new art critique website', user: req.user});
 });
 
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/'); // Successful. redirect to localhost:3000/exam
 });
-
 
 function runQuery_showPosts(req, res, client, done, next) {
   return function(err, result){
@@ -25,7 +28,7 @@ function runQuery_showPosts(req, res, client, done, next) {
     }
     else {
       console.log(result);
-      res.render('notAdmin', {usernamep: result.rows.username, post: result.rows.description} );
+      res.render('notAdmin', {posts: result.rows} );
     }
   };
 } // client.query
@@ -36,7 +39,7 @@ function connectDB_showPosts(req, res, next) {
       console.log("Unable to connect to database");
       return next(err);
     }
-    client.query('SELECT * FROM posts', runQuery_notAdmin(req, res, client, done, next));
+    client.query('SELECT * FROM posts', runQuery_showPosts(req, res, client, done, next));
   };
 }
 
