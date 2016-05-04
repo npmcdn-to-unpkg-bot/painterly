@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('dashboard', { title: 'Painterly | a whole new art critique website'});
+  res.render('dashboard', { title: 'Painterly | a whole new art critique website', user: req.user});
 });
 
 router.get('/logout', function(req, res){

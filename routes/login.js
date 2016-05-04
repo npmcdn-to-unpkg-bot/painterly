@@ -6,18 +6,18 @@ var bcrypt = require('bcryptjs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
+console.log(req.user + "I made it here!");
   res.render('login', { error: req.flash('error')});
+
 });
 
 router.post('/',
   // depends on the fiels "isAdmin", redirect to the different path: admin or notAdmin
   passport.authenticate('local', { failureRedirect: '/login', failureFlash:'Invalid username or password :('}),
-  function(req, res,next) {
+  function(req, res, next) {
     // res.json(req.user);
     // res.redirect('/users/profile')
-    console.log(req.user + "I made it here!");
-    res.redirect('/login/dashboard'), {user: req.user};
+    res.redirect('login/dashboard'), {user: req.user};
 });
 
 router.get('/changePassword', function(req, res){
@@ -58,7 +58,6 @@ router.post('/changePassword', function(req, res,next){
   }
 });
 router.get('/dashboard',loggedIn,function(req, res){
-      console.log(req.user);
       res.render('/dashboard'), { user: req.user }; //
 });
 

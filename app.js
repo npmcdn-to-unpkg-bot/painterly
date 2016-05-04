@@ -4,10 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
-var login = require('./routes/login');
 var users = require('./routes/users');
+var login = require('./routes/login');
 var dashboard = require('./routes/dashboard');
 var home = require('./routes/home')
 var session = require('express-session');
@@ -38,7 +37,7 @@ passport.use(new LocalStrategy({
         return console.error("Unable to connect to database");
       }
       console.log("Connected to database");
-      client.query('SELECT * FROM users WHERE username = $1', [username], function(err, result) {
+      client.query('SELECT * FROM users WHERE username = $1', [username.toLowerCase()], function(err, result) {
         // Release client back to pool
         next();
         if (err) {
@@ -62,6 +61,7 @@ passport.use(new LocalStrategy({
 // Store user information into session
 passport.serializeUser(function(user, done) {
   //return done(null, user.id);
+
   return done(null, user);
 });
 
@@ -69,19 +69,11 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   return done(null, id);
 });
-
-// Use the session middleware
-// configure session object to handle cookie
 app.use(session({
-  //proxy: true,
-  secret: 'keyboard cat',
- //cookie: { maxAge: 60000 },
-  resave:false,
-  saveUninitialized: true,
-// cookie: { secure: app.get('env') === 'production' }
+  secret: 'keyboard cat', resave: false, saveUninitialized: true
 }));
-
 app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -101,9 +93,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/masonry',express.static(__dirname + '/masonry'));
 app.use('/jqueryvalidation',express.static(__dirname + '/jqueryvalidation'));
-
-app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true
-}));
 
 app.use('/login', login);
 app.use('/dashboard', dashboard);
