@@ -6,22 +6,18 @@ var bcrypt = require('bcryptjs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
   res.render('login', { error: req.flash('error')});
 });
 
 router.post('/',
   // depends on the fiels "isAdmin", redirect to the different path: admin or notAdmin
-  passport.authenticate('local', { failureRedirect: '/', failureFlash:'Inhvalid username or password :('}),
+  passport.authenticate('local', { failureRedirect: '/login', failureFlash:'Invalid username or password :('}),
   function(req, res,next) {
     // res.json(req.user);
     // res.redirect('/users/profile')
-    console.log(req.user);
-    res.redirect('/home'), {user: req.user};
-});
-
-router.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/'); // Successful. redirect to localhost:3000/exam
+    console.log(req.user + "I made it here!");
+    res.redirect('/login/dashboard'), {user: req.user};
 });
 
 router.get('/changePassword', function(req, res){
@@ -61,23 +57,20 @@ router.post('/changePassword', function(req, res,next){
 
   }
 });
+router.get('/dashboard',loggedIn,function(req, res){
+      console.log(req.user);
+      res.render('/dashboard'), { user: req.user }; //
+});
 
 function loggedIn(req, res, next) {
   if (req.user) {
-    res.redirect('/home');
+    res.redirect('/dashboard'), { user: req.user };
   } else {
     res.redirect('/'); // user doesn't exisit
   }
 }
 
 ///////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////
-
-router.get('/signup',function(req, res) {
-    console.log("student");
-});
-
 // check if username has spaces, DB will whine about that
 function validUsername(username) {
   var login = username.trim(); // remove spaces
@@ -93,8 +86,8 @@ function encryptPWD(password){
 ///////////////////////////////////////////////////////////
 function createUser(req, res, client, done, next){
   console.log("create account");
-  var email = req.body.emailS;
-  var usern = req.body.userS;
+  var email = req.body.emailS.toLowerCase();
+  var usern = req.body.userS.toLowerCase();
   var pwd = encryptPWD(req.body.passwS);
   var college = req.body.college;
   var location = req.body.location;
@@ -109,7 +102,7 @@ function createUser(req, res, client, done, next){
     }
     else{
       console.log("User creation is successful");
-      res.redirect('/home'), {user: usern, success: true};
+      res.redirect('/dashboard'), {user: req.user, success: true};
     }
   });
 }
@@ -138,7 +131,7 @@ function connectDB(req, res, next) {
       console.log("Unable to connect to database");
       return next(err);
     }
-    client.query('SELECT * FROM users WHERE username=$1',[req.body.userS], runQuery(req, res, client, done, next));
+    client.query('SELECT * FROM users WHERE username=$1',[req.body.userS.toLowerCase()], runQuery(req, res, client, done, next));
   };
 }
 

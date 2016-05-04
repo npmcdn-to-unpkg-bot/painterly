@@ -4,16 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var index = require('./routes/index');
+
 var routes = require('./routes/index');
 var login = require('./routes/login');
 var users = require('./routes/users');
+var dashboard = require('./routes/dashboard');
 var home = require('./routes/home')
+var session = require('express-session');
 
 var app = express();
-
 var session = require('express-session');
 var flash = require('express-flash');
+
 var env = require('dotenv');
 env.config();
 
@@ -73,10 +75,10 @@ passport.deserializeUser(function(id, done) {
 app.use(session({
   //proxy: true,
   secret: 'keyboard cat',
-//  cookie: { maxAge: 60000 },
+ //cookie: { maxAge: 60000 },
   resave:false,
   saveUninitialized: true,
-//  cookie: { secure: app.get('env') === 'production' }
+// cookie: { secure: app.get('env') === 'production' }
 }));
 
 app.use(flash());
@@ -94,11 +96,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 //lets us use static files in public
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/masonry',express.static(__dirname + '/masonry'));
+app.use('/jqueryvalidation',express.static(__dirname + '/jqueryvalidation'));
 
-app.use('/index', index);
+app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true
+}));
+
 app.use('/login', login);
+app.use('/dashboard', dashboard);
 app.use('/home', home);
 
 app.use('/', routes);

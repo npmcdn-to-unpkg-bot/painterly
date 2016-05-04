@@ -1,97 +1,77 @@
   <head>
-    <meta charset="utf-8" >
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" type="text/css" href="https://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
-    <link	rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link	rel="stylesheet" href="/stylesheets/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="jqueryvalidation/lib/jquery.js"></script>
+    <script src="jqueryvalidation/dist/jquery.validate.js"></script>
+    <script src="/masonry/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="/masonry/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/masonry/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/masonry/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link	rel="stylesheet" href="/stylesheets/styles.css">
   </head>
   <title>="Painterly"</title>
   <body>
-
-<div data-role="page" id="main">
     <main	class="container-fluid">
       <div class="row">
         <aside class="col-md-6 center">
-
             <img id="logo" src="images/Logo.jpg" />
             <br>
             <h1>Painterly</h1>
             <br>
 
-            <a href ="#signup" data-rel="popup" class="btn btn-primary btn-lg bcolor" data-position-to="window">   SIGN UP   </a>
-            <a href="#login" data-rel="popup" class="btn btn-primary btn-lg pcolor" data-position-to="window">    LOG IN    </a>
+            <a href ="#signup" class="btn btn-primary btn-lg bcolor" data-toggle="modal"  data-position-to="window">   SIGN UP   </a>
+            <a href="#login" class="btn btn-primary btn-lg pcolor" data-toggle="modal"  data-position-to="window">    LOG IN    </a>
             <br><br>
-            <div data-role="popup" id="login" class="ui-content" style="min-width:250px;">
-              <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-              <form method="post" action="login">
-                <div>
-                  <h3>Login information</h3>
-                  <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-                  <input type="text" name="username" required id="usrnm" placeholder="Username">
-                  <label for="pswd" class="ui-hidden-accessible">Password:</label>
-                  <input type="password" name="password" required id="pswd" placeholder="Password" >
-                  <input type="submit" data-inline="true" value="Log in">
-                </div>
-              </form>
-            </div>
-
-            <div data-role="popup" id="signup" class="ui-content" style="min-width:250px;">
-              <form method="post" action="login/signup">
-                <div>
-                  <h3>Signup information</h3>
-                  <label for="emailS" class="ui-hidden-accessible">Email:</label>
-                  <input type="text" name="emailS" required  id="emailS" placeholder="Email">
-                  <label for="usernameS" class="ui-hidden-accessible">Username:</label>
-                  <input type="text" name="userS" required id="usernameS" placeholder="Username">
-                  <label for="pswdS" class="ui-hidden-accessible">Password:</label>
-                  <input type="password" name="passwS" required id="pswdS" placeholder="Password">
-                  <label for="college" class="ui-hidden-accessible">College:</label>
-                  <input type="text" name="college" required id="college" placeholder="College">
-                  <label for="location" class="ui-hidden-accessible">Location:</label>
-                  <input type="text" name="location" required id="loc" placeholder="location">
-                  <label for="signupS">What level are you?</label>
-                  <fieldset data-role="controlgroup" data-type="horizontal" >
-                    <input type="radio" name="level" id="radio-choice-1" value="Freshman" checked/>
-                    <label for="radio-choice-1">Freshman</label>
-                    <input type="radio" name="level" id="radio-choice-2" value="Sophmore<"  />
-                    <label for="radio-choice-2">Sophmore</label>
-                    <input type="radio" name="level" id="radio-choice-3" value="Junior"  />
-                    <label for="radio-choice-3">Junior</label>
-                    <input type="radio" name="level" id="radio-choice-4" value="Senior"  />
-                    <label for="radio-choice-4">Senior</label>
-                    <input type="radio" name="level" id="radio-choice-5" value="Graduate"  />
-                    <label for="radio-choice-5">Graduate</label>
-                    <input type="radio" name="level" id="radio-choice-6" value="Educator"  />
-                    <label for="radio-choice-6">Educator</label>
-                  </fieldset>
-                  <label for="signupS">What medium do you produce?</label>
-                  <fieldset data-role="controlgroup" data-type="horizontal" >
-                    <input type="radio" name="medium" id="radio-choice-7" value="Digital" checked/>
-                    <label for="radio-choice-7">Digital</label>
-                    <input type="radio" name="medium" id="radio-choice-8" value="Branding"  />
-                    <label for="radio-choice-8">Branding</label>
-                    <input type="radio" name="medium" id="radio-choice-9" value="Paintings"  />
-                    <label for="radio-choice-9">Paintings</label>
-                    <input type="radio" name="medium" id="radio-choice-10" value="Illustration"  />
-                    <label for="radio-choice-10">Illustration</label>
-                    <input type="radio" name="medium" id="radio-choice-11" value="Sculpture"  />
-                    <label for="radio-choice-11">Sculpture</label>
-                    <input type="radio" name="medium" id="radio-choice-12" value="Other"  />
-                    <label for="radio-choice-12">Other</label>
-                  </fieldset>
-                  <input type="submit" data-inline="true" value="Sign me up!">
-                </div>
-              </form>
-            </div>
-            {{#if error}}
-                <p>{{error}}</p>
-            {{/if}}
             {{#if invalid}}
-                <p>{{invalid}}</p>
+            <div class="modal fade" id="overlayI">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Uh oh!</h4>
+                </div>
+                <div class="modal-body">
+                  <p>{{error}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+            <script>
+            $('#overlayI').modal('show');
+
+              setTimeout(function() {
+                  $('#overlayI').modal('hide');
+              }, 5000);
+            </script>
             {{/if}}
+            {{#if error}}
+            <div class="modal fade" id="overlay">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Uh oh!</h4>
+                </div>
+                <div class="modal-body">
+                  <p>{{error}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+            <script>
+            $('#overlay').modal('show');
+
+              setTimeout(function() {
+                  $('#overlay').modal('hide');
+              }, 5000);
+            </script>
+          {{/if}}
+
             <h5> What is painterly? </h5>
             Join a community of college-level artists sharing work of different mediums. Critique others' work and get critiques on your work!
             <br><br>
@@ -105,10 +85,8 @@
             <i class="fa fa-user fa-5x giconcolor "></i>
             <h4>Create</h4>
           </div>
-
-          <div class="hover">Create your account today to share your work and view others’ creations from around the world. With a Painterly account, you’ll be able to give and receive feedback from fellow art students. Get some constructive criticism before passing in that project!
-  </div>
-
+          <div class="hover"> Create your account today to share your work and view others’ creations from around the world. With a Painterly account, you’ll be able to give and receive feedback from fellow art students. Get some constructive criticism before passing in that project!
+          </div>
         </aside>
 
         <aside class="col-md-3 sideborder">
@@ -116,8 +94,7 @@
             <i class="fa fa-pencil fa-5x yiconcolor "></i>
             <h4>Contribute</h4>
           </div>
-          <div class="hover">Post your work to the community whenever, wherever. Don’t have anything you need critiqued? Help your fellow students by searching for others’ work and leave feedback. [Search function in future]
- </div>
+          <div class="hover">Post your work to the community whenever, wherever. Don’t have anything you need critiqued? Help your fellow students by searching for others’ work and leave feedback. [Search function in future] </div>
         </aside>
 
         <aside class="col-md-3 sideborder">
@@ -125,8 +102,7 @@
             <i class="fa fa-graduation-cap fa-5x piconcolor "></i>
             <h4>Connect</h4>
           </div>
-          <div class="hover">Search for students in your vicinity to see what they’re up to, or see what’s being created at a certain school. [Search function in future]
-</div>
+          <div class="hover">Search for students in your vicinity to see what they’re up to, or see what’s being created at a certain school. [Search function in future]</div>
         </aside>
 
         <aside class="col-md-3 sideborder">
@@ -134,12 +110,203 @@
             <i class="fa fa-envelope-o fa-5x oiconcolor "></i>
             <h4>Communicate</h4>
           </div>
-          <div class="hover">Privately message other users to share thoughts and ideas, or to exchange information with students you know. [Message function in future]
- </div>
+          <div class="hover">Privately message other users to share thoughts and ideas, or to exchange information with students you know. [Message function in future] </div>
         </aside>
 
-      </div>
-    </main>
-</div>
+        <!--- validation for login --->
+        <script>
 
+        $().ready(function() {
+          // validate the comment form when it is submitted
+          $("#loginForm").validate({
+            rules: {
+            username: {
+                minlength: 1,
+                maxlength: 15,
+                required: true
+            },
+            password: {
+                minlength: 1,
+                maxlength: 15,
+                required: true
+            }
+        },
+            highlight: function(element) {
+                       $(element).closest('.form-group').addClass('has-error');
+                   },
+                   unhighlight: function(element) {
+                       $(element).closest('.form-group').removeClass('has-error');
+                   },
+                   errorElement: 'span',
+                   errorClass: 'help-block',
+                   errorPlacement: function(error, element) {
+                       if(element.parent('.input-group').length) {
+                           error.insertAfter(element.parent());
+                       } else {
+                           error.insertAfter(element);
+                       }
+
+            }
+          });
+        });
+      </script>
+        <!--- login popup --->
+        <div id="login" class="modal fade" class="hidden">
+          <div class="vertical-alignment-helper">
+          <div class="modal-dialog vertical-align-center">
+          <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal" aria-label="close"><button type="button" class="close" data-dismiss="modal">&times;</button></a>
+                <h4 class="modal-title">Login information</h4>
+            </div>
+                <div class="modal-body">
+                <form id="loginForm" method="post" action="login">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label class="sr-only" for="username">Username</label>
+                      <input type="username" class="form-control" name="username" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="pswd">Password</label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                    <input type="submit" class="btn btn-info" value="Log me in!">
+                  </form>
+                </div>
+              </div></div></div></div>
+          <!--- for signup popup--->
+          <div id="signup" class="modal fade" class="hidden">
+            <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <a href="#" class="close" data-dismiss="modal" aria-label="close"><button type="button" class="close" data-dismiss="modal">&times;</button></a>
+                  <h4 class="modal-title">Sign me up baby</h4></div>
+                  <div class="modal-body">
+                  <form method="post" action="login/signup" id="signupForm">
+                    <form class="form-inline">
+                      <div class="form-group">
+                      <label class="sr-only" for="Email">Email</label>
+                      <input type="email" name="emailS" class="form-control" id="emailS" placeholder="Email (Must be .edu!)">
+                      </div>
+                      <div class="form-group">
+                      <label class="sr-only" for="usernameS">Username</label>
+                      <input type="text" name="userS" class="form-control" id="usernameS" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                      <label class="sr-only" for="pswdS">Password</label>
+                      <input type="password" name="passwS" class="form-control" id="pswdS" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                      <label class="sr-only" for="college">College</label>
+                      <input type="text" name="college" class="form-control"id="college" placeholder="College">
+                      </div>
+                      <div class="form-group">
+                      <label class="sr-only" for="location">Location</label>
+                      <input type="text" name="location" class="form-control" id="loc" placeholder="Location">
+                      </div>
+                      <div class="form-group">
+                        <label for="signupS">What Level are you?</label><br>
+                        <div class="btn-group" data-toggle="buttons">
+                          <label class="btn btn-primary active">
+                                <input type="radio" name="level" id="radio-choice-1" value="Freshman" checked/>
+                                Freshman</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="level" id="radio-choice-2" value="Sophmore<"  />
+                              Sophmore</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="level" id="radio-choice-3" value="Junior"  />
+                                Junior</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="level" id="radio-choice-4" value="Senior"  />
+                              Senior</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="level" id="radio-choice-5" value="Graduate"  />
+                              Graduate</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="level" id="radio-choice-6" value="Educator"  />
+                              Educator</label>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="medium">What medium do you produce?</label>
+                          <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary active">
+                              <input type="radio" name="medium" id="radio-choice-7" value="Digital" checked/>
+                              Digital</label>
+                              <label class="btn btn-primary">
+                              <input type="radio" name="medium" id="radio-choice-8" value="Branding"  />
+                              Branding</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="medium" id="radio-choice-9" value="Paintings"  />
+                              Paintings</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="medium" id="radio-choice-10" value="Illustration"  />
+                              Illustration</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="medium" id="radio-choice-11" value="Sculpture"  />
+                              Sculpture</label>
+                            <label class="btn btn-primary">
+                              <input type="radio" name="medium" id="radio-choice-12" value="Other"  />
+                              Other</label>
+                            </div>
+                      </div>
+
+                      <input type="submit" class="btn btn-info" value="Sign me up!">
+                  </form>
+              </div></div></div></div></div>
+              <script>
+
+jQuery.validator.addMethod("eduemail", function(value, element)
+{
+    var result = value.search(".edu");
+    if(result == -1){
+      return false;
+    } else {
+      return true;
+    }
+},'Email must contain .EDU');
+
+              $().ready(function() {
+                // validate the comment form when it is submitted
+                $("#signupForm").validate({
+
+                  rules: {
+                  emailS: { email: true, minlength:1, required: true, eduemail: true},
+                  userS: {
+                      minlength: 1,
+                      maxlength: 15,
+                      required: true
+                  },
+                  passwS: {
+                      minlength: 5,
+                      maxlength: 15,
+                      required: true
+                  },
+                  college: {required: true, minlength: 2, maxlength: 25},
+                  location: {required: true, minlength: 3, maxlength: 20}
+
+              },
+                  highlight: function(element) {
+                             $(element).closest('.form-group').addClass('has-error');
+                         },
+                         unhighlight: function(element) {
+                             $(element).closest('.form-group').removeClass('has-error');
+                         },
+                         errorElement: 'span',
+                         errorClass: 'help-block',
+                         errorPlacement: function(error, element) {
+                             if(element.parent('.input-group').length) {
+                                 error.insertAfter(element.parent());
+                             } else {
+                                 error.insertAfter(element);
+                             }
+
+                  }
+                });
+              });
+              </script>
+        </div>
+        </main>
 </body>

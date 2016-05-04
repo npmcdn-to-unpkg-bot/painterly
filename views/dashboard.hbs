@@ -1,5 +1,25 @@
 <head>
-    <link rel="shortcut icon" href="images/logo.png" />
+
+      <!-- jQuery -->
+      <script src="/masonry/bower_components/jquery/dist/jquery.min.js"></script>
+
+      <!-- Bootstrap Core JavaScript -->
+      <script src="/masonry/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+      <!-- Metis Menu Plugin JavaScript -->
+      <script src="/masonry/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+      <!-- Custom Theme JavaScript -->
+      <script src="/masonry/dist/js/sb-admin-2.js"></script>
+
+      <!--masonry-->
+      <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+      <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+
+
+      <!-- scroll to top -->
+      <script type="text/javascript" src="http://static.tumblr.com/ikeq9mi/DfYl6o46t/scrolltotop.min.js"></script>
+    <link rel="shortcut icon" href="masonry/pages/images/logo.png" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +29,9 @@
 
     <title>Painterly</title>
 
-    <link href="/startbootstrap-sb-admin-2-1.0.8 2/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/startbootstrap-sb-admin-2-1.0.8 2/dist/css/sb-admin-2.css" rel="stylesheet">
-    <link href="/startbootstrap-sb-admin-2-1.0.8 2/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/masonry/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/masonry/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/masonry/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -27,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/dashboard"><img src="images/side_logo.png" height="25" width="50" alt="Painterly" style="float:left;"></a>
+                <a class="navbar-brand" href="/dashboard"><img src="/masonry/pages/images/side_logo.png" height="25" width="50" alt="Painterly" style="float:left;"></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -133,7 +153,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#">Settings</a>
                         </li>
-                        <li><a href="/index">Logout</a>
+                        <li><a href="/dashboard/logout">Logout</a>
                         </li>
                     </ul>
                   </li>
@@ -145,8 +165,8 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                   <center>
-                  <p><h4>Your Info</h4></p>
-                    <div class="image-circle"><img src="images/GenericUser.png"></div>
+                  <p><h4>{{user.username}}</h4></p>
+                    <div class="image-circle"><img src="masonry/pages/images/GenericUser.png"></div>
                     <p></p>
                     <ul class="nav" id="side-menu">
                         <li>
@@ -241,26 +261,6 @@
 
 <!-- END page content -->
 
-    <!-- jQuery -->
-    <script src="/startbootstrap-sb-admin-2-1.0.8 2/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/startbootstrap-sb-admin-2-1.0.8 2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/startbootstrap-sb-admin-2-1.0.8 2/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/startbootstrap-sb-admin-2-1.0.8 2/dist/js/sb-admin-2.js"></script>
-
-    <!--masonry-->
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-    <!-- scroll to top -->
-    <script type="text/javascript" src="http://static.tumblr.com/ikeq9mi/DfYl6o46t/scrolltotop.min.js"></script>
     <a href="javascript:;" id="scrollToTop" rel="nofollow" title="Go to Top"><img src="http://66.media.tumblr.com/tumblr_lw6754XlLF1r43b17.png" title="Go to Top"/></a>
 
 </body>
