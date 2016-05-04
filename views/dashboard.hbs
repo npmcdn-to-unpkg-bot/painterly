@@ -72,12 +72,13 @@
 		                    <div class="content">
                           <form method="post" action="newPost">
                             <div style = "float:left; width: 200px;">Upload a File: </div>
-                              <input type="file" class="upload" name="photoUpload"/><p></p>
+                              <input type="file" class="upload" name="photoUpload" disabled/><p></p>
 
                             <div style = "float:left; width: 200px;">Enter a Description: <br>(Or use this to create a post with just text)</div>
                               <textarea name="description" placeholder="Describe your work" height="100" width="100"></textarea><p>
 
-                            <input type="submit" value="Submit your Post!">
+                            <input type="submit" value="Submit your Post!" disabled>
+                            I really wish this worked :(
                           </p>
                           </form>
                           {{#if success}}
@@ -89,7 +90,7 @@
 
               <!-- link to user's page -->
               <li class="dropdown">
-                  <a href="#" style="color:#D2E49C">
+                  <a href="/" style="color:#D2E49C">
                       <i class="fa fa-user fa-lg"></i>
                   </a>
               </li>
