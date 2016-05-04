@@ -70,8 +70,11 @@ passport.deserializeUser(function(id, done) {
   return done(null, id);
 });
 app.use(session({
-  secret: 'keyboard cat', resave: false, saveUninitialized: true
+  secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: true, cookie: { secure: app.get('env') === 'production' }
 }));
+
+
+
 app.use(flash());
 
 app.use(passport.initialize());
