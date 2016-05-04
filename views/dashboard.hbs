@@ -178,7 +178,7 @@
                         <li>
                             <i class="fa fa-graduation-cap fa-2x" style="color:#F97B35;"></i>
                             {{#if user}}
-                            {{user.school}}
+                            {{user.college}}
                             {{/if}}
                         </li>
                         <p>
@@ -192,7 +192,7 @@
                         <p>
                         <li>
                           {{#if user}}
-                          {{user.year}}
+                          {{user.level}}
                           {{/if}}
                         </li>
                       </p>
@@ -213,13 +213,13 @@
                   {{/if}}
             </div>
             </div>
-            {{#if posts}}
+            {{#if post}}
             <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
               <div class="grid">
                 {{#each posts}}
                 <div class="grid-item">
                   <div class="panel-heading">
-                      <a href="{{theirusername}}">{{theirusername}}</a> posted:
+                      <a href="{{theirusername}}">{{usernamep}}</a> posted:
                   </div>
                     {{#if photoUpload}}
                     {{photoUpload}}
@@ -240,23 +240,40 @@
               </div>
               {{/each}}
               {{else}}
-              <h4>No posts to display.</h4>
+      <!---       <h4>No posts to display.</h4> --->
               {{/if}}
-
+              <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+                <div class="grid">
+                  <div class="grid-item">
+                  <div class="panel-heading">
+                      <a href="{{username}}">{{user.username}}</a> posted:
+                  </div>
+                    <img src="masonry/pages/images/cat2.jpg"> Look at him. Just look at him
+                    <p>
+                      <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{user.college}}
+                      <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{user.location}}
+                      <br>
+                      {{user.level}}
+                      {{tag}}
+                    </p>
+                  </div></div></div>
               <div class="grid-item">
               <div class="panel-heading">
-                  <a href="{{username}}">{{username}}</a> posted:
+                  <a href="{{username}}">{{user.username}}</a> posted:
               </div>
-                <img src="images/cat2.jpg"> Look at him. Just look at him
-                <p>
-                  <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{theirschool}}
-                  <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{theirlocation}}
+                <p> Now, this is a story all about how
+                    My life got flipped-turned upside down
+                    And I'd like to take a minute
+                    Just sit right there
+                    I'll tell you how I became the prince of a town called Bel-Air
+
+                  <i class="fa fa-graduation-cap fa-lg" style="color:#F97B35;"></i> {{user.college}}
+                  <i class="fa fa-map-marker fa-lg" style="color:#F97B35"></i> {{user.location}}
                   <br>
-                  {{theirschoollevel}}
+                  {{user.level}}
                   {{tag}}
                 </p>
               </div>
-
           </div>
           </div>
 
